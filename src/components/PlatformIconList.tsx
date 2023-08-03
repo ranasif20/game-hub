@@ -1,10 +1,10 @@
 import {
   FaWindows,
   FaPlaystation,
+  FaXbox,
   FaApple,
   FaLinux,
   FaAndroid,
-  FaXbox,
 } from 'react-icons/fa';
 import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
@@ -17,7 +17,7 @@ interface Props {
   platforms: Platform[];
 }
 
-const PlatformiconList = ({ platforms }: Props) => {
+const PlatformIconList = ({ platforms = [] }: Props) => {
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -29,13 +29,14 @@ const PlatformiconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     web: BsGlobe,
   };
+
   return (
-    <HStack marginY={'10px'}>
+    <HStack marginY={1}>
       {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} color='gray.500' />
+        <Icon key={platform.id} as={iconMap[platform.slug]} color='gray.500' />
       ))}
     </HStack>
   );
 };
 
-export default PlatformiconList;
+export default PlatformIconList;
